@@ -11,24 +11,21 @@ the following debugging workflow:
 
 ## Setup
 
-Run the server:
+1. Install [Leiningen](http://leiningen.org/), [NodeJS](http://nodejs.org/), and [PhantomJS](http://phantomjs.org/).
+1. Run the following in the project directory:
 
-```
-npm install express
-node server
-```
+    ```
+    npm install express
+    node server
+    ```
 
-Run the ClojureScript auto-compiler:
+1. In another terminal, run the auto-compiler from the project directory:
 
-```
-lein cljsbuild auto
-```
+    ```
+    lein cljsbuild auto
+    ```
 
-Open your browser to the url:
-
-```
-http://localhost:1234
-```
+1. Open <http://localhost:1234> in your browser.
 
 ## Unit Tests
 

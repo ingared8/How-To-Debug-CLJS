@@ -1,11 +1,13 @@
 # ClojureScript Debugging
 
-Try your hand at ClojureScript debugging using this simple web app example.
-Includes the following facilities:
+I want to share some ClojureScript debugging practices that I find helpful.
+This project provides a simple web app example intended for studying/practicing
+the following debugging workflow:
 
-- Unit Tests (for automating pure function tests and DOM tests)
-- Browser REPL (for inspecting state and injecting cljs code on a running page)
-- Source Maps (for using the browser debugger to trace cljs code)
+- __Testing__ - quickly test your code without opening a web browser
+- __Interacting__ - play with your code while it's running on your web page
+- __Logging__ - easily and descriptively log your application state
+- __Tracing__ - pause and step through code
 
 ## Setup
 

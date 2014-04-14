@@ -27,7 +27,7 @@ the following debugging workflow:
 
 1. Open <http://localhost:1234> in your browser.
 
-![page](page.png)
+![page](img/page.png)
 
 ## Logging
 

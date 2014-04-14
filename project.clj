@@ -13,6 +13,7 @@
    [com.cemerick/clojurescript.test "0.3.0"]]
 
   :hooks [leiningen.cljsbuild]
+  :aliases {"super-debug" ["with-profile" "+maps" "cljsbuild" "auto"]}
 
   :cljsbuild
   {:builds {:main {:source-paths ["src" "test"]
@@ -34,5 +35,5 @@
                    (spit "public/repl-url" (:repl-url env))
                    (cemerick.austin.repls/cljs-repl (reset! cemerick.austin.repls/browser-repl-env env))))]
 
-  :profiles {:debug-extra
+  :profiles {:maps
              {:cljsbuild {:builds {:main {:compiler {:source-map "public/js/main.js.map"}}}}}})

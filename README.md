@@ -206,9 +206,54 @@ Now you can inspect the value of the greeting in the DOM.
 
 If all goes well, you should see "Hello there, me" on the web page too.
 
-## Source Maps
+## Tracing
+
+You can place a breakpoint somewhere in your program if you want to halt the
+program and/or manually trace the flow of execution from there.
+
+### Breakpoints
+
+The project provides a `breakpoint` macro which causes the browser to halt when
+the line is reached, but _only_ when the Developer window of your browser is
+open.
+
+```clojure
+(breakpoint)
+```
+
+If the developer window is open, you should see the Javascript code that your
+ClojureScript code compiles to:
+
+![tracing-js](img/tracing-js.png)
+
+Notice that you can see the current value of `new_name` on the right bar
+corresponds to the local binding of `new-name` in ClojureScript.
+
+You can also toggle breakpoints from this view by clicking the line numbers.
+
+### Source Maps
+
+You can see your ClojureScript code instead of its compiled Javascript form in
+the debugger by using `lein super-debug` instead of `lein cljsbuild
+auto`.
 
 ```
-lein with-profile debug-extra cljsbuild auto
+lein super-debug
 ```
+
+This is just a custom alias (see `project.clj`) for:
+
+```
+lein with-profile +maps cljsbuild auto
+```
+
+Now you will see this instead:
+
+![tracing-cljs](img/tracing-cljs.png)
+
+This works by generating source maps in order to associate ClojureScript line
+numbers with compiled Javascript line numbers.  Unfortunately this extra
+compilation step currently takes a long time (~7 extra seconds every
+recompile), so I recommend only using `lein super-debug` when you specifically
+need to trace your code.
 

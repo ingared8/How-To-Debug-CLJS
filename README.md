@@ -4,9 +4,9 @@ I want to share some ClojureScript debugging practices that I find helpful.
 This project provides a simple web app example intended for studying/practicing
 the following debugging workflow:
 
+- __Logging__ - easily and descriptively log your application state
 - __Testing__ - quickly test your code without opening a web browser
 - __Interacting__ - play with your code while it's running on your web page
-- __Logging__ - easily and descriptively log your application state
 - __Tracing__ - pause and step through code
 
 ## Setup
@@ -26,6 +26,31 @@ the following debugging workflow:
     ```
 
 1. Open <http://localhost:1234> in your browser.
+
+## Logging
+
+The easiest way to debug your application is to log messages to the browser console:
+
+```clojure
+(js/console.log "b =>" (pr-str b))
+```
+
+`pr-str` serializes the given clojure value into a string for easy viewing.
+
+To make this even easier, this project includes an `inspect` macro that prints any number of values:
+
+```clojure
+(inspect a)
+; prints:
+;   a => 1
+
+(inspect a b c (+ 1 2 3))
+; prints:
+;   a => 1
+;   b => :foo-bar
+;   c => ["hi" "world"]
+;   (+ 1 2 3) => 6
+```
 
 ## Testing
 
@@ -86,15 +111,68 @@ script](https://github.com/cemerick/clojurescript.test/blob/master/resources/cem
 which can be replaced with a custom script for opening test pages with a
 preconfigured DOM, or even for directly running the web app as is.
 
-## Browser REPL
+## Interacting
 
+If you want to interact with the web app's code while it is running, you
+can hook up an interactive ClojureScript prompt (REPL) to a browser session
+displaying your page:
+
+1. From the terminal at your project directory, run:
+
+    ```
+    lein repl
+    ```
+
+    ```clojure
+    (brepl)
+    ```
+
+1. Open <http://localhost:1234> in your browser.
+1. Go back to the terminal and run:
+
+    ```clojure
+    (js/alert "hello")
+    ```
+
+1. If you don't see an alert window on the browser. Refresh the page.
+
+### Trying things
+
+Type the following to enter the project's namespace under main.
+
+```clojure
+(ns example.main)
 ```
-lein repl
-(brepl)
+
+You can set the value of the `username` atom with the following.
+
+```clojure
+(reset! username "me")
 ```
+
+You can inspect the value of that atom too:
+
+```clojure
+@username
+```
+
+If you want to use other symbols, like the JQuery `$` function:
+
+```clojure
+(ns example.main (:require [jayq.core :refer [$]]))
+```
+
+Now you can inspect the value of the greeting in the DOM.
+
+```clojure
+(.html ($ "#greeting"))
+```
+
+If all goes well, you should see "Hello there, me" on the web page too.
 
 ## Source Maps
 
 ```
 lein with-profile debug-extra cljsbuild auto
 ```
+

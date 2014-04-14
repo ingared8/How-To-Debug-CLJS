@@ -1,6 +1,6 @@
 (ns example.main-test
   (:require-macros
-    [cemerick.cljs.test :refer (is deftest testing)])
+    [cemerick.cljs.test :refer (is deftest testing done)])
   (:require
     [cemerick.cljs.test :as t]
     [example.main :as main]
@@ -38,3 +38,20 @@
   (-> ($ "#greeting")
       (.remove)))
 
+;;------------------------------------------------------------
+;; Asynchronous DOM test.
+;;------------------------------------------------------------
+
+(deftest ^:async greeting-clear
+
+  ; Create the DOM element.
+  (-> ($ "<div id='greeting'></div>") (.appendTo "body"))
+
+  ; Make sure DOM greeting is cleared after 2 seconds.
+  (reset! main/username "Billy")
+  (js/setTimeout
+    (fn []
+      (is (= "" (.html ($ "#greeting")))) ; check if clear
+      (-> ($ "#greeting") (.remove))      ; remove DOM element
+      (done))                             ; exit test
+    2000))

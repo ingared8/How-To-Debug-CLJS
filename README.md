@@ -111,6 +111,29 @@ script](https://github.com/cemerick/clojurescript.test/blob/master/resources/cem
 which can be replaced with a custom script for opening test pages with a
 preconfigured DOM, or even for directly running the web app as is.
 
+### Asynchronous Tests
+
+You can also test asynchronous functions by making your test
+wait for a callback.  Asynchronous test functions must have:
+
+- the metadata `^:async` before the function name
+- a call to `(done)` to signify when the test is done
+
+```clojure
+(deftest ^:async greeting-clear
+
+  ; Create the DOM element.
+  (-> ($ "<div id='greeting'></div>") (.appendTo "body"))
+
+  ; Make sure DOM greeting is cleared after 2 seconds.
+  (js/setTimeout
+    (fn []
+      (is (= "" (.html ($ "#greeting")))) ; check if clear
+      (-> ($ "#greeting") (.remove))      ; remove DOM element
+      (done))                             ; exit test
+    2000))
+```
+
 ## Interacting
 
 If you want to interact with the web app's code while it is running, you

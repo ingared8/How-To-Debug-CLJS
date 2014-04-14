@@ -34,10 +34,13 @@
   (inspect old-name new-name)
 
   ; Show the result of the greeting function in the console.
+  ; Then set the greeting label to it.
   ; (inspect function returns the last argument's value)
   (.html ($ "#greeting") (inspect (greeting new-name)))
-
   (inspect (.html ($ "#greeting")))
+
+  ; Clear the greeting after 2 seconds.
+  (js/setTimeout #(.html ($ "#greeting") "") 2000)
 
   ;(breakpoint)   ;<--- uncomment to start breakpoint
                   ; (only works if browser dev toolbar open)

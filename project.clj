@@ -10,7 +10,9 @@
   :plugins
   [[lein-cljsbuild "1.0.3"]
    [com.cemerick/austin "0.1.4"]
-   [com.cemerick/clojurescript.test "0.2.1"]]
+   [com.cemerick/clojurescript.test "0.3.0"]]
+
+  :hooks [leiningen.cljsbuild]
 
   :cljsbuild
   {:builds {:main {:source-paths ["src" "test"]
@@ -29,7 +31,7 @@
                (require 'cemerick.austin.repls)
                (defn brepl []
                  (let [env (cemerick.austin/repl-env)]
-                   (spit "public/js/repl-url" (:repl-url env))
+                   (spit "public/repl-url" (:repl-url env))
                    (cemerick.austin.repls/cljs-repl (reset! cemerick.austin.repls/browser-repl-env env))))]
 
   :profiles {:debug-extra

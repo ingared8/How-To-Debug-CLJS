@@ -27,6 +27,8 @@ the following debugging workflow:
 
 1. Open <http://localhost:1234> in your browser.
 
+![page](page.png)
+
 ## Logging
 
 The easiest way to debug your application is to log messages to the browser console:
@@ -52,6 +54,10 @@ To make this even easier, this project includes an `inspect` macro that prints a
 ;   (+ 1 2 3) => 6
 ```
 
+You can see the result of the `inspect` calls in the browser console:
+
+![logging](img/logging.png)
+
 ## Testing
 
 It's nice having the ability to test your code without opening a browser.  The
@@ -60,6 +66,10 @@ following command runs all the tests contained in the test/ directory:
 ```
 lein test
 ```
+
+It will run three tests and print the following:
+
+![testing](img/testing.png)
 
 ### Pure Function Testing
 
@@ -157,7 +167,10 @@ displaying your page:
     (js/alert "hello")
     ```
 
-1. If you don't see an alert window on the browser. Refresh the page.
+1. If you don't see an alert window on the browser. Refresh the page.  You should see this:
+
+![interacting](img/interacting.png)
+
 
 ### Trying things
 

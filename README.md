@@ -257,3 +257,6 @@ compilation step currently takes a long time (~7 extra seconds every
 recompile), so I recommend only using `lein super-debug` when you specifically
 need to trace your code.
 
+__NOTE__ I recently found out that source maps are instantaneous for
+`:optimizations :none`, which really should be used in when developing.
+(This project needs to be updated to use this setting)

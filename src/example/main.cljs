@@ -2,18 +2,19 @@
   (:require-macros
     [example.macros :refer [inspect breakpoint]])
   (:require
-    [clojure.browser.repl :as repl]
-    [jayq.core :refer [$ ajax]]))
+    [clojure.browser.repl :as repl]))
+
+(def $ js/$)
 
 ;;------------------------------------------------------------
 ;; Connect to the Browser REPL
 ;;------------------------------------------------------------
 
 (defn connect-repl []
-  (ajax {:url "repl-url"
-         :cache false
-         :dataType "text"
-         :success #(repl/connect %)}))
+  (.ajax $ #js {:url "repl-url"
+                :cache false
+                :dataType "text"
+                :success #(repl/connect %)}))
 
 ;;------------------------------------------------------------
 ;; Create a greeting string.

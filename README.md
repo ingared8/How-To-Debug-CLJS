@@ -11,21 +11,21 @@ the following debugging workflow:
 
 ## Setup
 
-1. Install [Leiningen](http://leiningen.org/), [NodeJS](http://nodejs.org/), and [PhantomJS](http://phantomjs.org/).
-1. Run the following in the project directory:
-
-    ```
-    npm install express
-    node server
-    ```
-
-1. In another terminal, run the auto-compiler from the project directory:
+1. Install [Leiningen](http://leiningen.org/) and [PhantomJS](http://phantomjs.org/).
+1. In a terminal, run the auto-compiler from the project directory:
 
     ```
     lein cljsbuild auto
     ```
 
-1. Open <http://localhost:1234> in your browser.
+1. In another terminal at project root, install and run a simple web server:
+
+    ```
+    npm install -g http-server
+    http-server
+    ```
+
+1. Navigate your browser to <http://localhost:8080/index.htm>
 
 ![page](img/page.png)
 
@@ -160,7 +160,7 @@ displaying your page:
     (brepl)
     ```
 
-1. Open <http://localhost:1234> in your browser.
+1. Open <http://localhost:8080/index.htm> in your browser.
 1. Go back to the terminal and run:
 
     ```clojure

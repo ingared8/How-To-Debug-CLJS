@@ -1,15 +1,13 @@
 *.swp
+*.map
 
 /.lein-failures
 /.lein-repl-history
 /.nrepl-port
 /.repl
 
-node_modules
+/out/
+/target/
 
-out
-target
-
-/public/repl-url
-/public/js/main.js
-/public/js/main.js.map
+/repl-url
+/example.js

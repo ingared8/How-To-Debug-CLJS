@@ -3,8 +3,9 @@
     [cemerick.cljs.test :refer (is deftest testing done)])
   (:require
     [cemerick.cljs.test :as t]
-    [example.main :as main]
-    [jayq.core :refer [$]]))
+    [example.main :as main]))
+
+(def $ js/$)
 
 ;;------------------------------------------------------------
 ;; Test a pure function.

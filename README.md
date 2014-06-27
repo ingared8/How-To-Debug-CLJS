@@ -167,7 +167,7 @@ displaying your page:
     (js/alert "hello")
     ```
 
-1. If you don't see an alert window on the browser. Refresh the page.  You should see this:
+1. You should see this:
 
 ![interacting](img/interacting.png)
 

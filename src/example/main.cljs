@@ -2,7 +2,7 @@
   (:require-macros
     [example.macros :refer [inspect breakpoint]])
   (:require
-    [clojure.browser.repl :as repl]))
+    [weasel.repl :as repl]))
 
 (def $ js/$)
 
@@ -10,11 +10,10 @@
 ;; Connect to the Browser REPL
 ;;------------------------------------------------------------
 
-(defn connect-repl []
-  (.ajax $ #js {:url "repl-url"
-                :cache false
-                :dataType "text"
-                :success #(repl/connect %)}))
+(defn connect-repl
+  "Connect to the websocket REPL to allow debugging."
+  []
+  (repl/connect "ws://localhost:9001" :verbose true))
 
 ;;------------------------------------------------------------
 ;; Create a greeting string.

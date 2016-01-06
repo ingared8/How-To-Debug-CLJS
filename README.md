@@ -1,3 +1,8 @@
+__OUTDATED__: _Please see [figwheel] for "interacting" and [doo] for "testing"_
+
+[figwheel]:https://github.com/bhauman/lein-figwheel
+[doo]:https://github.com/bensu/doo
+
 # ClojureScript Debugging
 
 I want to share some ClojureScript debugging practices that I find helpful.

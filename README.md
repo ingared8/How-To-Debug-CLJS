@@ -1,7 +1,8 @@
-__OUTDATED__: _Please see [figwheel] for "interacting" and [doo] for "testing"_
+__OUTDATED__: _Please see [figwheel] for "interacting", [doo] for "testing", and [Dirac] to help with "tracing"_
 
 [figwheel]:https://github.com/bhauman/lein-figwheel
 [doo]:https://github.com/bensu/doo
+[Dirac]:https://github.com/binaryage/dirac
 
 # ClojureScript Debugging
 
